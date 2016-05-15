@@ -7,10 +7,13 @@ from heapq import nlargest
 from operator import itemgetter
 from collections import defaultdict
 
+train_file = "/home/ml1/Downloads/Kaggle-Expedia/AnalyzedData/train.csv"
+test_file  = "/home/ml1/Downloads/Kaggle-Expedia/AnalyzedData/test.csv"
+output_path = "/home/ml1/Downloads/Kaggle-Expedia/AnalyzedData/"
 
 def run_solution():
     print('Preparing arrays...')
-    f = open("/home/ml1/Downloads/Kaggle-Expedia/AnalyzedData/train.csv", "r")
+    f = open(train_file, "r")
     f.readline()
     best_hotels_od_ulc = defaultdict(lambda: defaultdict(int))
     best_hotels_search_dest = defaultdict(lambda: defaultdict(int))
@@ -61,9 +64,9 @@ def run_solution():
 
     print('Generate submission...')
     now = datetime.datetime.now()
-    path = 'submission_' + str(now.strftime("%Y-%m-%d-%H-%M")) + '.csv'
+    path = output_path + 'submission_' + str(now.strftime("%Y-%m-%d-%H-%M")) + '.csv'
     out = open(path, "w")
-    f = open("/home/ml1/Downloads/Kaggle-Expedia/AnalyzedData/test.csv", "r")
+    f = open(test_file, "r")
     f.readline()
     total = 0
     out.write("id,hotel_cluster\n")
