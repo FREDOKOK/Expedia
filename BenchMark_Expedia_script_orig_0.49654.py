@@ -1,4 +1,5 @@
 # code source:  https://www.kaggle.com/zfturbo/expedia-hotel-recommendations/leakage-solution/code
+# score: 0.49654
 
 __author__ = 'ZFTurbo: https://kaggle.com/zfturbo'
 
