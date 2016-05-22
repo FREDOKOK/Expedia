@@ -73,7 +73,13 @@ def transform_test_file():
         
     f.close()
     out.close()
-            
+
+def get_key(key):
+    try:
+        return int(key)
+    except ValueError:
+        return key
+    
 def transform_train_file():
         
     print('Transforming train file...')
@@ -127,7 +133,14 @@ def transform_train_file():
     out  = open(train_file_name,"w")
     #out.write("user_id, location, ratings\n")   #NO title
     
-    for user_id, srch_destination_id in user_item_rating:
+    key_list = user_item_rating.keys()
+    #key_list.sort(key=lambda i:i[0])
+
+    sorted_key_list = sorted(key_list, key=lambda t:get_key(t[0]))
+    
+    #print( sorted_key_list )
+    
+    for (user_id, srch_destination_id) in sorted_key_list:
         
         cluster_score = user_item_rating[(user_id,srch_destination_id)]
         #get the hotel cluster that user booked or clicked mostly
